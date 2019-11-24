@@ -20,7 +20,31 @@ class Board():
         rez = self.matrix
         return rez
 
-    def board_cls(self):
+    def clearBoard(self):
         """Method to clear current board"""
         self.matrix = None
         self.matrix = [[0 for var_x in range(3)] for var_y in range(3)]
+
+    def checkWinner(self):
+        winner = 0
+        if (
+            (self.matrix[0][0] + self.matrix[0][1] + self.matrix[0][2] == 3) or
+            (self.matrix[1][0] + self.matrix[1][1] + self.matrix[1][2] == 3) or
+            (self.matrix[2][0] + self.matrix[2][1] + self.matrix[2][2] == 3) or
+            (self.matrix[0][0] + self.matrix[1][0] + self.matrix[2][0] == 3) or
+            (self.matrix[0][1] + self.matrix[1][1] + self.matrix[2][1] == 3) or
+            (self.matrix[0][2] + self.matrix[1][2] + self.matrix[2][2] == 3) or
+            (self.matrix[0][0] + self.matrix[1][1] + self.matrix[2][2] == 3) or
+            (self.matrix[0][2] + self.matrix[1][1] + self.matrix[2][0] == 3)
+        ): winner = 1
+        elif (
+            (self.matrix[0][0] + self.matrix[0][1] + self.matrix[0][2] == -3) or
+            (self.matrix[1][0] + self.matrix[1][1] + self.matrix[1][2] == -3) or
+            (self.matrix[2][0] + self.matrix[2][1] + self.matrix[2][2] == -3) or
+            (self.matrix[0][0] + self.matrix[1][0] + self.matrix[2][0] == -3) or
+            (self.matrix[0][1] + self.matrix[1][1] + self.matrix[2][1] == -3) or
+            (self.matrix[0][2] + self.matrix[1][2] + self.matrix[2][2] == -3) or
+            (self.matrix[0][0] + self.matrix[1][1] + self.matrix[2][2] == -3) or
+            (self.matrix[0][2] + self.matrix[1][1] + self.matrix[2][0] == -3)
+        ): winner = -1
+        return winner
