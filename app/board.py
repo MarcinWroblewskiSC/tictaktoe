@@ -28,22 +28,22 @@ class Board():
     def checkWinner(self):
         winner = 0
         if (
-            (self.matrix[0][0] + self.matrix[0][1] + self.matrix[0][2] == 3) or
-            (self.matrix[1][0] + self.matrix[1][1] + self.matrix[1][2] == 3) or
-            (self.matrix[2][0] + self.matrix[2][1] + self.matrix[2][2] == 3) or
-            (self.matrix[0][0] + self.matrix[1][0] + self.matrix[2][0] == 3) or
-            (self.matrix[0][1] + self.matrix[1][1] + self.matrix[2][1] == 3) or
-            (self.matrix[0][2] + self.matrix[1][2] + self.matrix[2][2] == 3) or
+            (sum(self.matrix[0]) == 3) or
+            (sum(self.matrix[1]) == 3) or
+            (sum(self.matrix[2]) == 3) or
+            (sum(row[0] for row in self.matrix) == 3) or
+            (sum(row[1] for row in self.matrix) == 3) or
+            (sum(row[2] for row in self.matrix) == 3) or
             (self.matrix[0][0] + self.matrix[1][1] + self.matrix[2][2] == 3) or
             (self.matrix[0][2] + self.matrix[1][1] + self.matrix[2][0] == 3)
         ): winner = 1
         elif (
-            (self.matrix[0][0] + self.matrix[0][1] + self.matrix[0][2] == -3) or
-            (self.matrix[1][0] + self.matrix[1][1] + self.matrix[1][2] == -3) or
-            (self.matrix[2][0] + self.matrix[2][1] + self.matrix[2][2] == -3) or
-            (self.matrix[0][0] + self.matrix[1][0] + self.matrix[2][0] == -3) or
-            (self.matrix[0][1] + self.matrix[1][1] + self.matrix[2][1] == -3) or
-            (self.matrix[0][2] + self.matrix[1][2] + self.matrix[2][2] == -3) or
+            (sum(self.matrix[0]) == -3) or
+            (sum(self.matrix[1]) == -3) or
+            (sum(self.matrix[2]) == -3) or
+            (sum(row[0] for row in self.matrix) == -3) or
+            (sum(row[1] for row in self.matrix) == -3) or
+            (sum(row[2] for row in self.matrix) == -3) or
             (self.matrix[0][0] + self.matrix[1][1] + self.matrix[2][2] == -3) or
             (self.matrix[0][2] + self.matrix[1][1] + self.matrix[2][0] == -3)
         ): winner = -1

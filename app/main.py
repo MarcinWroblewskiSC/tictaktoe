@@ -36,7 +36,7 @@ def smartmoves(isinit, board, player):
         # board[vxp][vyp] = player
         board[0][2] = player
     else:
-        opponent = -1*player
+        opponent = -player
         # Final moves section
         if (board[0][0] == player and board[0][1] == player and board[0][2] == 0):
             board[0][2] = player
