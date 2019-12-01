@@ -25,19 +25,18 @@ def mainGame():
             if newboard.checkWinner() != 0:
                 print("The winner is player: " + str(newboard.checkWinner()))
                 break
-        vplayer = vplayer*(-1)
+        vplayer = -vplayer
         vstee += 1
 
 
 def smartmoves(isinit, board, player):
     if isinit == 1:
-        # vxp = rnd.randint(0,2)
-        # vyp = rnd.randint(0,2)
-        # board[vxp][vyp] = player
-        board[0][2] = player
+        vxp = rnd.randint(0,2)
+        vyp = rnd.randint(0,2)
+        board[vxp][vyp] = player
     else:
         opponent = -player
-        # Final moves section
+# Final moves section
         if (board[0][0] == player and board[0][1] == player and board[0][2] == 0):
             board[0][2] = player
         elif (board[0][0] == player and board[0][1] == 0 and board[0][2] == player):
@@ -74,7 +73,7 @@ def smartmoves(isinit, board, player):
             board[1][2] = player
         elif (board[0][2] == player and board[1][2] == player and board[2][2] == 0):
             board[2][2] = player
-        # diagonal final moves
+# diagonal final moves
         elif (board[0][0] == player and board[1][1] == player and board[2][2] == 0):
             board[2][2] = player
         elif (board[0][0] == player and board[1][1] == 0 and board[2][2] == player):
@@ -87,7 +86,64 @@ def smartmoves(isinit, board, player):
             board[1][1] = player
         elif (board[0][2] == 0 and board[1][1] == player and board[2][0] == player):
             board[0][2] = player
-        # Blocks
+# Diagonal blocks
+        elif (board[0][0] == opponent and board[1][1] == opponent and board[2][2] == 0):
+            board[2][2] = player
+        elif (board[1][1] == opponent and board[2][2] == opponent and board[0][0] == 0):
+            board[0][0] = player
+        elif (board[0][0] == opponent and board[2][2] == opponent and board[1][1] == 0):
+            board[1][1] = player
+        elif (board[2][0] == opponent and board[0][2] == opponent and board[1][1] == 0):
+            board[1][1] = player
+        elif (board[1][1] == opponent and board[0][2] == opponent and board[2][0] == 0):
+            board[2][0] = player
+        elif (board[1][1] == opponent and board[2][0] == opponent and board[0][2] == 0):
+            board[0][2] = player
+# Horizontal line blocks
+        elif (board[0][0] == opponent and board[0][1] == opponent and board[0][2] == 0):
+            board[0][2] = player
+        elif (board[0][1] == opponent and board[0][2] == opponent and board[0][0] == 0):
+            board[0][0] = player
+        elif (board[0][0] == opponent and board[0][2] == opponent and board[0][1] == 0):
+            board[0][1] = player
+
+        elif (board[1][0] == opponent and board[1][1] == opponent and board[1][2] == 0):
+            board[1][2] = player
+        elif (board[1][1] == opponent and board[1][2] == opponent and board[1][0] == 0):
+            board[1][0] = player
+        elif (board[1][0] == opponent and board[1][2] == opponent and board[1][1] == 0):
+            board[1][1] = player
+
+        elif (board[2][0] == opponent and board[2][1] == opponent and board[2][2] == 0):
+            board[2][2] = player
+        elif (board[2][1] == opponent and board[2][2] == opponent and board[2][0] == 0):
+            board[2][0] = player
+        elif (board[2][0] == opponent and board[2][2] == opponent and board[2][1] == 0):
+            board[2][1] = player
+
+# Vertical line blocks
+        elif (board[0][0] == opponent and board[2][0] == opponent and board[1][0] == 0):
+            board[1][0] = player
+        elif (board[0][0] == opponent and board[1][0] == opponent and board[2][0] == 0):
+            board[2][0] = player
+        elif (board[1][0] == opponent and board[2][0] == opponent and board[0][0] == 0):
+            board[0][0] = player
+
+        elif (board[0][1] == opponent and board[2][1] == opponent and board[1][1] == 0):
+            board[1][1] = player
+        elif (board[0][1] == opponent and board[1][1] == opponent and board[2][1] == 0):
+            board[2][1] = player
+        elif (board[1][1] == opponent and board[2][1] == opponent and board[0][1] == 0):
+            board[0][1] = player
+
+        elif (board[0][2] == opponent and board[2][2] == opponent and board[1][2] == 0):
+            board[1][2] = player
+        elif (board[0][2] == opponent and board[1][2] == opponent and board[2][2] == 0):
+            board[2][2] = player
+        elif (board[1][2] == opponent and board[2][2] == opponent and board[0][2] == 0):
+            board[0][2] = player
+
+# Blocks
         elif board[0][0] == opponent:
             while True:
                 x = rnd.randint(0,1)
@@ -187,7 +243,6 @@ def smartmoves(isinit, board, player):
                     break
                 elif (board[2][1] != 0 and board[1][1] != 0 and board[1][2] != 0):
                     break
-# TODO: Diagonal blocks to be done
     return board
 
 mainGame()
