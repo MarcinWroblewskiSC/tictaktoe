@@ -3,13 +3,19 @@ import random as rnd
 
 print("Let's start here")
 
+def randPlayer():
+    player = 0
+    while player == 0:
+        player = rnd.randint(-1,1)
+    return player
+
 
 def mainGame():
     newboard = brd.Board()
     newboard.create()
     vstee = 0
     # todo: random player selection
-    vplayer = 1
+    vplayer = randPlayer()
     while vstee <= 8:
         print(vstee)
         if vstee == 0:
@@ -245,4 +251,6 @@ def smartmoves(isinit, board, player):
                     break
     return board
 
-mainGame()
+
+if __name__ == "__main__":
+    mainGame()
